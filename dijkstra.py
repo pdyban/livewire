@@ -3,6 +3,7 @@
 
 # http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/117228
 import heapq
+from math import log
 
 def shortestPath(G, start, end):
    def flatten(L):       # Flatten linked list of form [0,[1,[2,[]]]]
@@ -21,4 +22,4 @@ def shortestPath(G, start, end):
          path = (v1, path)
          for (v2, cost2) in G[v1].iteritems():
             if v2 not in visited:
-               heapq.heappush(q, (cost + cost2 + len(visited)/100, v2, path))
+               heapq.heappush(q, (cost + cost2 + log(len(visited))/10, v2, path))
