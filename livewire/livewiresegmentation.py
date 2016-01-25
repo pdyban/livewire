@@ -1,4 +1,3 @@
-__author__ = 'missoni'
 
 
 class LiveWireSegmentation(object):
