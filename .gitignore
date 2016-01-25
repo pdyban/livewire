@@ -1,0 +1,4 @@
+test.pyc
+.idea
+.ipynb_checkpoints
+livewire/__init__.pyc livewire/dijkstra.pyc livewire/livewiresegmentation.pyc
