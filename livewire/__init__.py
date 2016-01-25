@@ -23,13 +23,8 @@ class LiveWireSegmentation(object):
     def _compute_graph(self):
         from math import fabs
 
-        if self.thresholded_edges is not None:
-            edges = self.thresholded_edges
-        else:
-            edges = self.edges
-
         self.G = {}
-        rows, cols = edges.shape
+        rows, cols = self.edges.shape
         for col in range(cols):
             for row in range(rows):
 
@@ -49,11 +44,11 @@ class LiveWireSegmentation(object):
                 dist = {}
                 for n in neighbors:
                     # distance function can be replaced with a different norm
-                    dist[n] = fabs(edges[row][col] - edges[n[0], n[1]])
+                    dist[n] = fabs(self.edges[row][col] - self.edges[n[0], n[1]])
 
                 self.G[(row, col)] = dist
 
-    def compute_shortest_path(self, from_, to_, length_penalty=0.0, threshold=False):
+    def compute_shortest_path(self, from_, to_, length_penalty=0.0):
         if self.image is None:
             raise AttributeError("Load an image first!")
 
@@ -63,10 +58,11 @@ class LiveWireSegmentation(object):
         if self.edges is None:
             self._compute_gradient_image()
 
-        if threshold and self.thresholded_edges is None:
+        if self.thresholded_edges is None:
             self._threshold_gradient_image()
 
-        self._compute_graph()
+        if self.G is None:
+            self._compute_graph()
 
         from dijkstra import shortestPath
         path = shortestPath(self.G, from_, to_, length_penalty=length_penalty)
