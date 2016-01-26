@@ -2,9 +2,10 @@ from unittest import TestCase
 from livewire.livewiresegmentation import LiveWireSegmentation
 from dicom import read_file
 from skimage import img_as_int
+import numpy as np
 
 
-class MainUnitTest(TestCase):
+class LiveWireSegmentationTest(TestCase):
     def setUp(self):
         df = read_file('lung.dcm')
         self.test_image = img_as_int(df.pixel_array)
@@ -23,6 +24,7 @@ class MainUnitTest(TestCase):
         from_ = (0, 0)
         to_ = (1, 1)
         algorithm = LiveWireSegmentation(self.test_image)
+        first_id = id(algorithm.G)
         path = algorithm.compute_shortest_path(from_, to_)
         prev_id = id(algorithm.G)
 
@@ -31,6 +33,7 @@ class MainUnitTest(TestCase):
         path = algorithm.compute_shortest_path(from_, to_)
         cur_id = id(algorithm.G)
         self.assertEqual(cur_id, prev_id, 'Graph was recomputed even though not requested')
+        self.assertEqual(first_id, prev_id, 'Graph was recomputed even though not requested')
 
     def test_length_penalty_changes_result(self):
         shape = self.test_image.shape
@@ -43,3 +46,24 @@ class MainUnitTest(TestCase):
         path2 = algorithm.compute_shortest_path(from_, to_, length_penalty=100.0)
         self.assertNotEqual(len(path1), len(path2), 'Length penalty has had no effect on optimal path')
 
+    def test_can_init_image_later(self):
+        algorithm = LiveWireSegmentation(self.test_image)
+
+        algorithm_post = LiveWireSegmentation()
+        algorithm_post.image = self.test_image
+
+        self.assertDictEqual(algorithm.G, algorithm_post.G, 'Post-initialization failed')
+
+    def test_can_read_threshold_parameter(self):
+        algorithm_with_thresholding = LiveWireSegmentation(self.test_image, threshold_gradient_image=True)
+        algorithm_without_thresholding = LiveWireSegmentation(self.test_image, threshold_gradient_image=False)
+
+        self.assertNotEqual(np.linalg.norm(algorithm_with_thresholding.edges),
+                            np.linalg.norm(algorithm_without_thresholding.edges),
+                            'Gradient image with and without thresholding are the same')
+
+def StandaloneTest(TestCase):
+    """
+    Tests standalone function compute_shortest_path.
+    """
+    pass
