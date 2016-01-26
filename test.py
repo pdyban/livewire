@@ -1,5 +1,5 @@
 from unittest import TestCase
-from livewire.livewiresegmentation import LiveWireSegmentation
+from livewire import LiveWireSegmentation, compute_shortest_path
 from dicom import read_file
 from skimage import img_as_int
 import numpy as np
@@ -62,8 +62,23 @@ class LiveWireSegmentationTest(TestCase):
                             np.linalg.norm(algorithm_without_thresholding.edges),
                             'Gradient image with and without thresholding are the same')
 
-def StandaloneTest(TestCase):
+
+class StandaloneTest(TestCase):
     """
     Tests standalone function compute_shortest_path.
     """
-    pass
+    def setUp(self):
+        df = read_file('lung.dcm')
+        self.test_image = img_as_int(df.pixel_array)
+
+    def tearDown(self):
+        pass
+
+    def test_compute_shortest_path(self):
+        from_ = (0, 0)
+        to_ = (1, 1)
+        path_standalone = compute_shortest_path(self.test_image, from_, to_)
+
+        algorithm = LiveWireSegmentation(self.test_image)
+        path_class = algorithm.compute_shortest_path(from_, to_, length_penalty=0.0)
+        self.assertListEqual(path_standalone, path_class, "Optimal path is not as expected")
