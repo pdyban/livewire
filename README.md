@@ -1,4 +1,6 @@
 # Livewire
+[![Build Status](https://travis-ci.org/pdyban/livewire.svg?branch=master)](https://travis-ci.org/pdyban/livewire)
+
 This repository contains a working implementation of Livewire algorithm for image segmentation. The general idea of the algorithm is to use image information for segmentation and avoid crossing object boundaries. A gradient image highlights the boundaries, and Dijkstra's shrotest path algorithm computes a path using gradient differences as segment costs. Thus the line avoids strong gradients in the gradient image, which corresponds to following object boundaries in the original image.
 
 The notebook includes a script that loads a demo DICOM image (MR head scan), and allows the user to segment a structure in the brain by setting seed points and letting Livewire algorithm compute the "best" path in regard to the underlying objects to the next seed point. The algorithm suggestions are displayed as user moves the mouse over the image.
