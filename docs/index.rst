@@ -11,7 +11,12 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-
+This package implements Livewire segmentation algorithm for image segmentation.
+The general idea of the algorithm is to use image information for segmentation and avoid crossing
+object boundaries. A gradient image highlights the boundaries, and Dijkstra's shrotest path
+algorithm computes a path using gradient differences as segment costs.
+Thus the line avoids strong gradients in the gradient image, which corresponds to following object boundaries
+in the original image.
 
 Indices and tables
 ==================
