@@ -11,6 +11,6 @@ before_install:
 install:
   - "pip install cython"
   - cat requirements.txt | xargs -n 1 -L 1 pip install
-script: "ls -la && python pdyban/livewire/test.py"
+script: "ls -la && python ./test.py"
 after_success:
   - codecov
