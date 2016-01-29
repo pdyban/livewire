@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, main
 from livewire import LiveWireSegmentation, compute_shortest_path
 from dicom import read_file
 from skimage import img_as_int
@@ -7,7 +7,7 @@ import numpy as np
 
 class LiveWireSegmentationTest(TestCase):
     def setUp(self):
-        df = read_file('lung.dcm')
+        df = read_file('images/lung.dcm')
         self.test_image = img_as_int(df.pixel_array)
 
     def tearDown(self):
@@ -68,7 +68,7 @@ class StandaloneTest(TestCase):
     Tests standalone function compute_shortest_path.
     """
     def setUp(self):
-        df = read_file('lung.dcm')
+        df = read_file('images/lung.dcm')
         self.test_image = img_as_int(df.pixel_array)
 
     def tearDown(self):
@@ -82,3 +82,6 @@ class StandaloneTest(TestCase):
         algorithm = LiveWireSegmentation(self.test_image)
         path_class = algorithm.compute_shortest_path(from_, to_, length_penalty=0.0)
         self.assertListEqual(path_standalone, path_class, "Optimal path is not as expected")
+
+if __name__ == '__main__':
+    main()
