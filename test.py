@@ -83,5 +83,16 @@ class StandaloneTest(TestCase):
         path_class = algorithm.compute_shortest_path(from_, to_, length_penalty=0.0)
         self.assertListEqual(path_standalone, path_class, "Optimal path is not as expected")
 
+
+class TestOnCoinsData(TestCase):
+    """
+    Tests this package on standard coin data set from scikit-image.
+    """
+    def test_this(self):
+        from skimage import data
+        image = data.coins()
+
+        print compute_shortest_path(image, (20, 20), (25, 20))
+
 if __name__ == '__main__':
     main()
