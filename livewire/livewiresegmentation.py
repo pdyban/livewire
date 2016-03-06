@@ -55,7 +55,7 @@ class LiveWireSegmentation(object):
 
     def _smooth_image(self):
         from skimage import restoration
-        self.image = restoration.denoise_bilateral(self.image)
+        self._image = restoration.denoise_bilateral(self.image)
 
     def _compute_gradient_image(self):
         from skimage import filters
