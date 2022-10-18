@@ -1,4 +1,4 @@
-# Livewire Segmentation labelling tool
+# Livewire Segmentation Labelling Tool
 [![Build Status](https://travis-ci.org/pdyban/livewire.svg?branch=master)](https://travis-ci.org/pdyban/livewire)  <!--[![Documentation Status](http://readthedocs.org/projects/livewire-segmentation/badge/?version=latest)](http://livewire-segmentation.readthedocs.org/en/latest/?badge=latest)-->
 
 ## Updated
