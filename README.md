@@ -1,4 +1,4 @@
-# Livewire Segmentation Algorithm
+# Livewire Segmentation labelling tool
 [![Build Status](https://travis-ci.org/pdyban/livewire.svg?branch=master)](https://travis-ci.org/pdyban/livewire)  <!--[![Documentation Status](http://readthedocs.org/projects/livewire-segmentation/badge/?version=latest)](http://livewire-segmentation.readthedocs.org/en/latest/?badge=latest)-->
 
 ## Updated
@@ -8,7 +8,8 @@ The project in deep-learning-version is an expanded version of original one. Spe
 * Add deep learning model to provide extra gradient information, can be more accurate and be customized.
 * Optimized cost function and support 8-connected graph.
 * Useful for deep-learning segmentation labelling work.
-![New livewire example](demo.gif)
+* Save path coordinates to txt files. (Will complete functions to be consistent with VOC or other formats)
+![New livewire example](demo.gif){:height="70%" width="70%"}
 
 ---
 ## _Original docs_
