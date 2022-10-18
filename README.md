@@ -9,7 +9,7 @@ The project in deep-learning-version is an expanded version of original one. Spe
 * Optimized cost function and support 8-connected graph.
 * Useful for deep-learning segmentation labelling work.
 * Save path coordinates to txt files. (Will complete functions to be consistent with VOC or other formats)
-![New livewire example](demo.gif){:height="70%" width="70%"}
+![New livewire example](demo.gif)
 
 ---
 ## _Original docs_
