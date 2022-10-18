@@ -8,6 +8,7 @@ The project in deep-learning-version is an expanded version of original one. Spe
 * Add deep learning model to provide extra gradient information, can be more accurate and be customized.
 * Optimized cost function and support 8-connected graph.
 * Useful for deep-learning segmentation labelling work.
+![New livewire example](demo.gif)
 
 ---
 ## _Original docs_
