@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/pdyban/livewire.svg?branch=master)](https://travis-ci.org/pdyban/livewire)  <!--[![Documentation Status](http://readthedocs.org/projects/livewire-segmentation/badge/?version=latest)](http://livewire-segmentation.readthedocs.org/en/latest/?badge=latest)-->
 
 ## Updated
-The project in deep-learning-version is an expanded version of original one. Specifically,
+The project in deep-learning-version is an expanded version of original one. Just run `app.py`. Specifically,
 
 * A new interactive GUI written by pyplot.
 * Add deep learning model to provide extra gradient information, can be more accurate and be customized.
