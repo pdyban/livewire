@@ -21,7 +21,7 @@ seg_object_name = 'example'
 seg_model = None
 # readfile
 while True:
-    loc=input("Drag your picture dir here(special UTF-8 in path is not availiable)->")
+    loc=input("Drag your picture folder dir here(special UTF-8 in path is not availiable)->")
     loc=loc.replace("\\","/")
     loc=loc.replace("\"","")
 
