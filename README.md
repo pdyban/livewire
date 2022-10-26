@@ -2,7 +2,9 @@
 [![Build Status](https://travis-ci.org/pdyban/livewire.svg?branch=master)](https://travis-ci.org/pdyban/livewire)  <!--[![Documentation Status](http://readthedocs.org/projects/livewire-segmentation/badge/?version=latest)](http://livewire-segmentation.readthedocs.org/en/latest/?badge=latest)-->
 
 ## Usage
-Run `app.py`, drag folder with pictures in then label on them
+* `pip install -r requirements.txt`
+* If you do not want to use deep learning version, delete `torch>=1.8.1+cu111 torchvision>=0.9.1+cu111` in `requirements.txt`
+* Run `app.py` or `app_without_dl` (no deep learning utils), drag folder with pictures in then label on them
 
 =========  Instruction  ==========
 
