@@ -23,8 +23,7 @@ Run `app.py`, drag folder with pictures in then label on them
 |Other| You can also use matplotlib fit and drag buttons|
 
 ## Updated
-
-The project in deep-learning-version is an expanded version of original one. Specifically,
+The project in deep-learning-version is an expanded version of original one. Just run `app.py`. Specifically,
 
 * A new interactive GUI written by pyplot, with similar opeartion logic in PS.
 * Add deep learning model to provide extra gradient information, can be more accurate and be customized.
