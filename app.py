@@ -21,7 +21,7 @@ seg_object_name = 'example'
 seg_model = None
 # readfile
 while True:
-    loc=input("Drag your picture dir here(chinese character in path is not availiable)->")
+    loc=input("Drag your picture dir here(special UTF-8 in path is not availiable)->")
     loc=loc.replace("\\","/")
     loc=loc.replace("\"","")
 
@@ -38,7 +38,7 @@ def openfiles(img_loc):
     image = Image.open(img_loc)
     global w
     w, h = image.size
-    print(w,h)
+    # print(w,h)
     resize_factor = max(w,h)/480
     image = image.resize((int(w//resize_factor),int(h//resize_factor)))
     return image
@@ -69,7 +69,7 @@ def nextfile():
         image = openfiles(file_loc[file_cursor])
         time0 = time.process_time()
         track = Trackmanager(image,dl_util=seg_model,step=20)
-        print(time.process_time()-time0)
+        # print(time.process_time()-time0)
 
 def lastfile():
     global image,track,file_loc,file_cursor
@@ -154,7 +154,7 @@ def mouse_moved(event):
         refresh_frame()
 
 def key_pressed(event):
-    print('you pressed', event.key)
+    # print('you pressed', event.key)
     global editmode
     if event.key == ' ':
         quit_edit()
@@ -182,7 +182,21 @@ def key_pressed(event):
         back_step()
         print("Back one seed")
 
-       
+
+print("=========  Instruction  ==========")
+print("# When not editing:") 
+print("key: A           Switch to last pic, and save track") 
+print("key: D           Switch to next pic, and save track") 
+print("key: space       Begin editing") 
+print("# When editing:") 
+print("key: space           Exit editing and confirm(AUTO close polygon)") 
+print("mouse: Left button   Begin/Add a key point") 
+print("mouse: Move          Auto fit a curve") 
+print("key: Backspace       Undo a key point (and the red curve)") 
+print("key: esc             Exit editing") 
+print("key: C               Clear curves on canvas")
+ 
+  
 plt.connect('button_release_event', button_pressed)
 if INTERACTIVE:
     plt.connect('motion_notify_event', mouse_moved)

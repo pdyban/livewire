@@ -1,10 +1,32 @@
 # Livewire Segmentation Labelling Tool
 [![Build Status](https://travis-ci.org/pdyban/livewire.svg?branch=master)](https://travis-ci.org/pdyban/livewire)  <!--[![Documentation Status](http://readthedocs.org/projects/livewire-segmentation/badge/?version=latest)](http://livewire-segmentation.readthedocs.org/en/latest/?badge=latest)-->
 
+## Usage
+Run `app.py`, drag folder with pictures in then label on them
+
+=========  Instruction  ==========
+
+| When not editing: | |
+|---|---|
+|key: A|           Switch to last pic, and save track | 
+|key: D|           Switch to next pic, and save track | 
+|key: space|       Begin editing  |
+
+| When editing: | |
+|---|---|
+|key: space|       Exit editing and confirm (AUTO close polygon)  |
+|mouse: Left button|   Begin/Add a key point  |
+|mouse: Move|          Auto fit a curve  |
+|key: Backspace|       Undo a key point (and the red curve) |
+|key: esc            | Exit editing|
+|key: C|           Clear curves on canvas |
+|Other| You can also use matplotlib fit and drag buttons|
+
 ## Updated
+
 The project in deep-learning-version is an expanded version of original one. Specifically,
 
-* A new interactive GUI written by pyplot.
+* A new interactive GUI written by pyplot, with similar opeartion logic in PS
 * Add deep learning model to provide extra gradient information, can be more accurate and be customized.
 * Optimized cost function and support 8-connected graph.
 * Useful for deep-learning segmentation labelling work.
