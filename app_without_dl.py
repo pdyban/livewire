@@ -2,8 +2,8 @@ from livewire import Trackmanager
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-from dl_utils import Dlseg
-from torchvision import models
+# from dl_utils import Dlseg
+# from torchvision import models
 import os
 import time
 
@@ -16,9 +16,9 @@ w = 0
 length_penalty = 10.0
 seg_object_name = 'example'
 
-# prepare deep learning
-seg_model = Dlseg(models.segmentation.deeplabv3_resnet50(pretrained=True))
-# seg_model = None
+# prepare deep learning(This version does not use deep learning model, can run faster)
+# seg_model = Dlseg(models.segmentation.deeplabv3_resnet50(pretrained=True))
+seg_model = None
 # readfile
 while True:
     loc=input("Drag your picture folder dir here(special UTF-8 in path is not availiable)->")
