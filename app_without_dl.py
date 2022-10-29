@@ -183,7 +183,7 @@ def key_pressed(event):
 
     elif event.key == 'backspace' :
         back_step()
-        print("Back one seed")
+        # print("Back one seed")
 
 
 print("=========  Instruction  ==========")
