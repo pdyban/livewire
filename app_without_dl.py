@@ -118,7 +118,10 @@ def quit_edit():
 
 def back_step():
     track.back_step()
-    plt.pause(0.2)
+    try:
+        plt.pause(0.2)
+    except:
+        pass
     refresh_frame()
 
 # -------------------------------- #
