@@ -24,9 +24,19 @@ class Dlseg(object):
         self.model.eval()
         with torch.no_grad():
             out = self.model(img.cuda())['out']
-        om = torch.argmax(out.squeeze(), dim=0).detach().cpu().numpy()
-        om = self.decode_img(om)
-        return om
+        out = torch.softmax(out,dim=1)
+
+        prob,om = torch.max(out.squeeze(), dim=0)
+        prob = prob.detach().cpu().numpy()
+        om = om.detach().cpu().numpy()
+        om1 = om; om2 = om; om3 = om
+        om1[prob<0.2]=0       # if result<thresold, recognise as background
+        om2[prob<0.7]=0
+        om_out = self.decode_img(om1)
+        om_out += self.decode_img(om2)
+        om_out = np.clip(om_out, 0, 255)
+        om_out = np.uint8(om_out)
+        return om_out
 
     def decode_img(self,image, nc=21):
     # Define the helper function
