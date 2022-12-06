@@ -20,6 +20,7 @@ def shortestPath(G, start, end, length_penalty=0.0):
          if v1 == end:
             return list(flatten(path))[::-1] + [v1]
          path = (v1, path)
-         for (v2, cost2) in G[v1].iteritems():
+         # for (v2, cost2) in G[v1].iteritems():# py2.x attribute
+         for (v2, cost2) in G[v1].items():
             if v2 not in visited:
                heapq.heappush(q, (cost + cost2 + length_penalty*log(len(visited)), v2, path))

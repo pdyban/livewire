@@ -1,4 +1,5 @@
-from livewiresegmentation import LiveWireSegmentation
+from .livewiresegmentation import LiveWireSegmentation
+from .trackmanager import Trackmanager
 
 
 def compute_shortest_path(image, from_, to_, length_penalty=0.0):
