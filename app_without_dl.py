@@ -56,6 +56,8 @@ def savefile():
     path1 = list(zip(np.array(path)[:,1]*resize_factor, np.array(path)[:,0]*resize_factor))
     with open(txt_name, 'w') as fv:
         fv.write(seg_object_name+'\n')
+        fv.write(str(image.size)+'\n')
+        fv.write('---'+'\n')
         for points in path1:
             fv.write(str(points)+'\n')  
 
@@ -112,7 +114,7 @@ def quit_edit():
         path = track.get_path()
         path = list(path)
         path1 = list(zip(np.array(path)[:,1], np.array(path)[:,0]))
-        p = plt.Polygon(path1,color='white',alpha=0.2)
+        p = plt.Polygon(path1,color='white',alpha=0.4)
         plt.gca().add_patch(p)
         plt.draw()
 

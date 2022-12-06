@@ -56,6 +56,8 @@ def savefile():
     path1 = list(zip(np.array(path)[:,1]*resize_factor, np.array(path)[:,0]*resize_factor))
     with open(txt_name, 'w') as fv:
         fv.write(seg_object_name+'\n')
+        fv.write(str(image.size)+'\n')
+        fv.write('---'+'\n')
         for points in path1:
             fv.write(str(points)+'\n')  
 
